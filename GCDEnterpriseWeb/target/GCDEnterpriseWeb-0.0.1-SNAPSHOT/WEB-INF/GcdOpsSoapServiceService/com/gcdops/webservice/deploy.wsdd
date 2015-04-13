@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GcdOpsSoapServiceService WSDL service -->
+
+  <service name="GcdOpsSoapService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://webservice.gcdops.com"/>
+      <parameter name="wsdlServiceElement" value="GcdOpsSoapServiceService"/>
+      <parameter name="schemaQualified" value="http://webservice.gcdops.com,http://framework.gcdops.com"/>
+      <parameter name="wsdlServicePort" value="GcdOpsSoapService"/>
+      <parameter name="className" value="com.gcdops.webservice.GcdOpsSoapService"/>
+      <parameter name="wsdlPortType" value="GcdOpsSoapService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://webservice.gcdops.com" xmlns:retNS="http://webservice.gcdops.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="gcd" qname="operNS:gcd" returnQName="retNS:gcdReturn" returnType="rtns:int" soapAction="">
+        <fault xmlns:fns="http://webservice.gcdops.com" xmlns:tns="http://framework.gcdops.com" name="GCDOpsException" qname="fns:fault" class="com.gcdops.framework.GCDOpsException" type="tns:GCDOpsException"/>
+      </operation>
+      <operation xmlns:operNS="http://webservice.gcdops.com" xmlns:retNS="http://webservice.gcdops.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="gcdList" qname="operNS:gcdList" returnQName="retNS:gcdListReturn" returnType="rtns:int" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://webservice.gcdops.com" xmlns:retNS="http://webservice.gcdops.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="gcdSum" qname="operNS:gcdSum" returnQName="retNS:gcdSumReturn" returnType="rtns:int" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="gcdList gcdSum gcd"/>
+
+      <typeMapping xmlns:ns="http://framework.gcdops.com" qname="ns:GCDOpsException" type="java:com.gcdops.framework.GCDOpsException" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

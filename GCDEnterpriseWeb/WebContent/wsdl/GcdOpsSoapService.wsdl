@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://webservice.gcdops.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://webservice.gcdops.com" xmlns:intf="http://webservice.gcdops.com" xmlns:tns1="http://framework.gcdops.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://webservice.gcdops.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://framework.gcdops.com"/>
+   <element name="gcd">
+    <complexType/>
+   </element>
+   <element name="gcdResponse">
+    <complexType>
+     <sequence>
+      <element name="gcdReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="fault" type="tns1:GCDOpsException"/>
+   <element name="gcdList">
+    <complexType/>
+   </element>
+   <element name="gcdListResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="gcdListReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="gcdSum">
+    <complexType/>
+   </element>
+   <element name="gcdSumResponse">
+    <complexType>
+     <sequence>
+      <element name="gcdSumReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://framework.gcdops.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="GCDOpsException">
+    <sequence>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="gcdSumRequest">
+
+      <wsdl:part element="impl:gcdSum" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdListRequest">
+
+      <wsdl:part element="impl:gcdList" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdRequest">
+
+      <wsdl:part element="impl:gcd" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdListResponse">
+
+      <wsdl:part element="impl:gcdListResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdResponse">
+
+      <wsdl:part element="impl:gcdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdSumResponse">
+
+      <wsdl:part element="impl:gcdSumResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="GCDOpsException">
+
+      <wsdl:part element="impl:fault" name="fault">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="GcdOpsSoapService">
+
+      <wsdl:operation name="gcd">
+
+         <wsdl:input message="impl:gcdRequest" name="gcdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:gcdResponse" name="gcdResponse">
+
+       </wsdl:output>
+
+         <wsdl:fault message="impl:GCDOpsException" name="GCDOpsException">
+
+       </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdList">
+
+         <wsdl:input message="impl:gcdListRequest" name="gcdListRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:gcdListResponse" name="gcdListResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdSum">
+
+         <wsdl:input message="impl:gcdSumRequest" name="gcdSumRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:gcdSumResponse" name="gcdSumResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GcdOpsSoapServiceSoapBinding" type="impl:GcdOpsSoapService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="gcd">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="gcdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="gcdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="GCDOpsException">
+
+            <wsdlsoap:fault name="GCDOpsException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="gcdListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="gcdListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="gcdSum">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="gcdSumRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="gcdSumResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GcdOpsSoapServiceService">
+
+      <wsdl:port binding="impl:GcdOpsSoapServiceSoapBinding" name="GcdOpsSoapService">
+
+         <wsdlsoap:address location="http://localhost:8080/GCDEnterpriseWeb/services/GcdOpsSoapService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
